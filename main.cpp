@@ -9,6 +9,7 @@
 //#include "spdlog/stopwatch.h"
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/async.h"
+#include "gtest/gtest.h"
 
 
 //using namespace google;
@@ -119,9 +120,9 @@ int testBaseGlog()
 }
 #endif
 
-void testLogWrapper()
+TEST(LogWrapper, normalTest)
 {
-    std::cout <<"spdlog is running..." << std::endl;
+    //std::cout <<"spdlog is running..." << std::endl;
     SET_MODEL_NAME("TestModel");
     SET_LOG_PATH("./");
     SET_LOG_LEVEL(LOG_INFO_E);
@@ -144,12 +145,13 @@ void testLogWrapper()
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;
     LOG_INFO("Total: {}",elapsed_seconds.count());
-    std::cout << "Total: " << elapsed_seconds.count() << std::endl;
+    //std::cout << "Total: " << elapsed_seconds.count() << std::endl;
 }
 
 int main(int argc, char** argv)
 {
-    testLogWrapper();
+    testing::InitGoogleTest();
+    return RUN_ALL_TESTS();
 #if 0
     testBaseGlog();
     testRoslog(argc, argv);
@@ -157,6 +159,6 @@ int main(int argc, char** argv)
     testSpdlog_Async();
     testSpdlog_Sync();
 #endif
-    return 0;
+
 }
 

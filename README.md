@@ -34,3 +34,4 @@ LOG_CRITICAL("This message is critical");
 [spdlog库](https://github.com/gabime/spdlog)  
 [glog库](https://github.com/google/glog)  
 [ros2log库](https://github.com/ros2/rclcpp)  
+[gtest测试框架](https://github.com/google/googletest)  
